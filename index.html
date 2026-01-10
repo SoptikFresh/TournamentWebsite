@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New World - Tournament</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+      document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+                e.preventDefault();
+            }
+        });
+  </script>
+  
+</head>
+<body>
+  <nav>
+    <a href="#rules">Rules</a>
+    <a href="#host">Host</a>
+    <a href="#linktree">Co-Hosts</a>
+    <a href="#players">Players</a>
+    <a href="#tournament">Tournament</a>
+    <a href="#admin">Admin</a>
+  </nav>
+
+  
+
+  <section id="rules">
+    <div>
+      <h2>Game Rules Bruiser</h2>
+      <p> - WEIGHT: Medium </p>
+      <p> - You can switch gear before each duel</p>
+      <p> - <b>Weapons: </b>Hammer & Great Axe</p>
+      <h2>Allowed</h2>
+      <p> - Oakflesh & Gemstone dust are allowed</p>
+      <p> - Heartrune allowed</p>
+      <h2>Forbidden</h2>
+      <p> - NO potions (any kind)</p>
+      <h2>REWARDS</h2>
+      <p> - 1st place — 150,000 Gold + Champion role</p>
+      <p> - 2nd place — 50,000 Gold</p>
+      <p> - 3rd place — 25,000 Gold</p>
+    </div>
+  </section>
+  <section id="host">
+      <div class="column">
+      <h1>Kaanitou</h1>
+      <a href="https://www.twitch.tv/kaanitou">Twitch</a>
+      <a href="https://discord.gg/hWFmvceY">Discord</a>
+      <a href="https://www.youtube.com/@kaanitou">Youtube</a>
+      <a href="https://www.instagram.com/kaaan__/">Instagram</a>
+      <a href="https://twitter.com/kaanitoustream">Twitter</a>
+      <a href="https://www.tiktok.com/@kaanitoh?_t=8l7Awp3gqQ4&_r=1">Tik Tok</a>
+    </div>
+  </section>
+  <section id="linktree"> 
+    <div class="column">
+      <h1>CharlieT</h1>
+      <a href="https://www.twitch.tv/charlietea">Twitch</a>
+      <a href="https://www.youtube.com/@Charlieteav">Youtube</a>
+    </div>
+    <div class="column">
+      <h1>Langi</h1>
+      <a href="https://www.twitch.tv/llangi">Twitch</a>
+      <a href="https://discord.gg/mysDhRuKVY">Discord</a>
+      <a href="https://www.youtube.com/@lLangiOfficial">Youtube</a>
+    </div>
+    <div class="column">
+      <h1>Pandatangaaa</h1>
+      <a href="https://www.twitch.tv/pandatangaaa">Twitch</a>
+      <a href="https://www.youtube.com/channel/UCrP2Q7GNz3W9GOD7Hw6EdQQ">YouTube</a>
+    </div>
+  </section>
+
+  <section id="players">
+    <h1>Signed-Up Players</h1>
+    <input type="text" id="player-search" placeholder="Search players..." class="player-search">
+    <div id="player-list" class="player-columns"></div>
+  </section>
+
+  <section id="tournament">
+    <h1>Tournament Bracket</h1>
+    <div id="bracket-container" class="bracket-container">
+      <p id="no-tournament">Tournament bracket will appear here when it begins.</p>
+    </div>
+    <div id="refresh-indicator"></div>
+  </section>
+
+  <section id="admin">
+    <div class="login-overlay" id="login-overlay">
+      <div class="admin-login-form">
+        <h2>Admin Authentication</h2>
+        <input type="password" id="admin-password" placeholder="Enter admin password" required>
+        <button type="button" id="login-button" class="admin-button primary">Login</button>
+      </div>
+    </div>
+    
+    <h1>Admin Panel</h1>
+    <div class="admin-panel" id="admin-content">
+      <div class="admin-section">
+        <h3>Admin Management</h3>
+        <div class="admin-controls">
+          <button id="logout-button" class="admin-button danger">Logout</button>
+        </div>
+      </div>
+      
+      <div class="admin-section">
+        <h3>Player Management</h3>
+        <div class="admin-controls">
+          <form id="add-player-form" class="player-form">
+            <input type="text" id="new-player-name" placeholder="New player name" required>
+            <button type="submit" class="admin-button">Add Player</button>
+          </form>
+        </div>
+        
+        <div class="admin-controls">
+          <label for="upload-players" class="file-upload-label">
+            <span>Upload Player List</span>
+            <input type="file" id="upload-players" accept=".json,.txt" style="display: none;">
+          </label>
+          <button id="clear-players" class="admin-button danger">Clear All Players</button>
+          <button id="refresh-players" class="admin-button">Refresh Players</button>
+        </div>
+        
+        <div class="file-instructions">
+          <p>Accepted formats:</p>
+          <ul>
+            <li>JSON: Array of player names</li>
+            <li>TXT: One player name per line</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="admin-section">
+        <h3>Tournament Management</h3>
+        <div class="admin-controls">
+          <button id="generate-bracket" class="admin-button primary">Generate Bracket</button>
+          <button id="save-bracket" class="admin-button">Save Bracket</button>
+          <button id="reset-bracket" class="admin-button danger">Reset Bracket</button>
+        </div>
+        <div class="admin-controls">
+          <label for="bracket-size">Bracket Size:</label>
+          <select id="bracket-size" class="match-selector">
+            <option value="4">4 Players</option>
+            <option value="6">6 Players</option>
+            <option value="8">8 Players</option>
+            <option value="10">10 Players</option>
+            <option value="12">12 Players</option>
+            <option value="14">14 Players</option>
+            <option value="16" selected>16 Players</option>
+            <option value="32">32 Players</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="admin-section">
+  <h3>Tournament Settings</h3>
+  <div class="admin-controls">
+    <label for="bracket-size">Number of Slots:</label>
+    <select id="bracket-size">
+      <option value="4">4</option>
+      <option value="8">8</option>
+      <option value="16">16</option>
+      <option value="32">32</option>
+    </select>
+    
+    <label for="team-size">Team Size:</label>
+    <select id="team-size">
+      <option value="1">1v1</option>
+      <option value="2">2v2</option>
+      <option value="3">3v3</option>
+      <option value="4">4v4</option>
+      <option value="5">5v5</option>
+    </select>
+    
+    <label for="elimination-type">Bracket Type:</label>
+    <select id="elimination-type">
+      <option value="single">Single Elimination</option>
+      <option value="double">Double Elimination</option>
+    </select>
+  </div>
+</div>
+
+      <div class="admin-section">
+        <h3>Match Results</h3>
+        <div class="match-editor">
+          <select id="match-selector" class="match-selector">
+            <option value="">Select a match...</option>
+          </select>
+          <div id="match-edit-area"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="bracket.js"></script>
+</body>
+</html>
