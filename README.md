@@ -34,6 +34,59 @@ TournamentWebsite/
 2. Place the project on a PHP-enabled web server (e.g., XAMPP, WAMP, LAMP).
 3. Access `index.html` via your browser.
 
+## Installing PHP
+
+### Windows
+
+1. Download PHP from [php.net](https://www.php.net/downloads.php)
+2. Extract the ZIP file to a folder (e.g., `C:\php`)
+3. Add PHP to your system PATH:
+   - Open Environment Variables (search "Environment Variables" in Start Menu)
+   - Click "Edit the system environment variables"
+   - Click "Environment Variables..." button
+   - Under "System variables", select "Path" and click "Edit"
+   - Click "New" and add the PHP folder path (e.g., `C:\php`)
+   - Click OK on all dialogs
+4. Verify installation by opening a new terminal and running:
+   ```sh
+   php -v
+   ```
+
+### macOS
+
+Using Homebrew:
+
+```sh
+brew install php
+```
+
+### Linux
+
+**Ubuntu/Debian:**
+
+```sh
+sudo apt-get update
+sudo apt-get install php
+```
+
+**Fedora/RHEL:**
+
+```sh
+sudo dnf install php
+```
+
+## Running via PHP Built-in Server
+
+You can quickly start the application using PHP's built-in web server:
+
+```sh
+php -S localhost:8000
+```
+
+Then open your browser and navigate to `http://localhost:8000` to access the application.
+
+You can replace `8000` with any available port number if needed.
+
 ## Requirements
 
 - PHP 7.0 or higher
