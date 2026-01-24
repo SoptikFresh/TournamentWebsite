@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: tournament-website
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: PHP_DISPLAY_ERRORS
+        value: "off"

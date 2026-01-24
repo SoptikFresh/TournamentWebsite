@@ -87,10 +87,43 @@ Then open your browser and navigate to `http://localhost:8000` to access the app
 
 You can replace `8000` with any available port number if needed.
 
+## Docker Setup (For Render Hosting)
+
+This project includes Docker configuration for easy deployment on Render.
+
+### Running Locally with Docker
+
+1. Make sure Docker is installed on your system.
+2. Build and run the container:
+
+```sh
+docker-compose up --build
+```
+
+3. Access the application at `http://localhost:8080`
+
+### Deploying to Render
+
+1. Push your project to GitHub (or any Git repository)
+2. Create a new Web Service on [Render](https://render.com)
+3. Connect your repository
+4. Render will automatically detect the Dockerfile
+5. Configure the following:
+   - **Build Command:** (leave empty, Docker build is automatic)
+   - **Start Command:** (leave empty, Docker start is automatic)
+   - **Port:** 8080
+6. Deploy and access your service via the provided URL
+
+### Files Included for Docker
+
+- `Dockerfile` - Container configuration with PHP 8.2 and Apache
+- `docker-compose.yml` - Local development setup
+- `render.yaml` - Render-specific configuration
+
 ## Requirements
 
-- PHP 7.0 or higher
-- Web server (Apache, Nginx, etc.)
+- PHP 7.0 or higher (or Docker)
+- Web server (Apache, Nginx, etc.) or Docker
 
 ## Usage
 
